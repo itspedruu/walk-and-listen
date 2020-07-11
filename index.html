@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Title -->
+		<title>Walk & Listen</title>
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="assets/icon.png">
+
+		<!-- Twitter metadata -->
+		<meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Walk & Listen" />
+        <meta name="twitter:description" content="Walk around your favourite cities while listening to local radios." />
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/itspedruu/walk-and-listen/master/assets/banner.png" />
+		
+		<!-- Open Graph metadata-->
+		<meta property="og:url" content="https://pedropinto.tech/walk-and-listen"/>
+        <meta property="og:title" content="Walk & Listen" />
+        <meta property="og:description" content="Walk around favourite cities while listening to local radios." />
+        <meta property="og:image" content="https://raw.githubusercontent.com/itspedruu/walk-and-listen/master/assets/banner.png" />
+		
+		<!-- Description metadata-->
+		<meta name="description" content="Walk around your favourite cities while listening to local radios." />
+
+		<!-- Styles -->
+		<link href="css/index.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
+		<!-- Scripts -->
+		<script src="https://www.youtube.com/iframe_api"></script>
+		<script src="js/locations.js"></script>
+		<script src="js/radio.js"></script>
+		<script src="js/player.js"></script>
+	</head>
+	<body>
+		<div class="app">
+			<!-- Loading element -->
+			<div class="loading">
+				<h1>"LOADING"</h1>
+			</div>
+
+			<!-- Location Element-->
+			<div class="location"></div>
+
+			<!-- Youtube player element -->
+			<div class="player" id="player"></div>
+
+			<!-- Show/Hide button -->
+			<div class="show-hide" onclick="toggleMenu()"><i class="fas fa-eye-slash"></i></div>
+
+			<!-- Menu -->
+			<div class="menu">
+				<!-- Cities -->
+				<div class="cities">
+					<div class="cities-header">
+						<p>Cities</p>
+					</div>
+					<div class="cities-list">
+						<ul></ul>
+					</div>
+				</div>
+
+				<!-- Random City -->
+				<div class="random-city" onclick="changeLocation(chooseRandomLocation().id)">
+					<p>Take me to a good place.</p>
+				</div>
+
+				<!-- Radio -->
+				<div class="radio">
+					<!-- Radio Header -->
+					<div class="radio-header"></div>
+					
+					<!-- Radio Controls -->
+					<div class="radio-controls">
+						<div class="radio-play-pause" onclick="togglePlayPause()"><i class="fas fa-pause"></i></div>
+						<div class="radio-volume"><input type="range" min="0" max="100" step="1" value="50" onchange="changeVolume(this.value)"></div>
+					</div>
+
+					<!-- Radio Source -->
+					<iframe src="assets/silence.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
+					<audio autoplay onplay="removeRadioLoading()"></audio>
+				</div>
+
+				<!-- Configuration -->
+				<div class="configuration">
+					<!-- Noise configuration -->
+					<div class="configuration-group">
+						<p>Noise</p>
+						<button onclick="toggleNoise(this)">OFF</button>
+					</div>
+
+					<!-- Speed configuration -->
+					<div class="configuration-group">
+						<p>Speed</p>
+
+						<div class="buttons">
+							<button data-speed="1" class="active" onclick="setSpeed(1)">1X</button>
+							<button data-speed="1.5" onclick="setSpeed(1.5)">1.5X</button>
+							<button data-speed="2" onclick="setSpeed(2)">2X</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="information">
+					<div class="social">
+						<a target="blank" href="https://github.com/itspedruu"><i class="fab fa-github"></i></a>
+						<a target="blank" href="https://twitter.com/itspedruu"><i class="fab fa-twitter"></i></a>
+						<a target="blank" href="mailto:pedropinto.01@hotmail.com"><i class="fas fa-envelope"></i></a>
+						<a target="blank" href="https://pedropinto.tech"><i class="fas fa-globe"></i></a>
+					</div>
+					
+					<div class="video-source">
+						<a href="">Video Source</a>
+					</div>
+				</div>
+
+				<!-- Footer -->
+				<div class="footer">
+					<p>Inspired by <a target="blank" href="https://driveandlisten.herokuapp.com">Drive & Listen.</a></p>
+					<p>This is an open-source alternative.</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Main Script File (DOM & Input Manipulation)-->
+		<script src="js/index.js"></script>
+	</body>
+</html>
