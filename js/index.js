@@ -1,10 +1,4 @@
-// THIS FILE HANDLES ALL INPUT AND DOM MANIPULATIONS AND STORES THE CURRENT STATE OF THE APPLICATION
-
-let state = {
-	currentPlayer: null,
-	currentLocation: null,
-	listenedToPlayEvent: false
-}
+// THIS FILE HANDLES ALL INPUT AND DOM MANIPULATIONS
 
 function changeLoadingState(show) {
 	const loadingElement = document.querySelector('.loading');
@@ -62,6 +56,12 @@ function toggleMenu() {
 	icon.classList.add(isHidden ? 'fa-eye-slash' : 'fa-eye');
 
 	menuElement.style.display = isHidden ? 'flex' : 'none';
+}
+
+function changeVideoSource(videoId) {
+	const link = document.querySelector('.video-source a');
+
+	link.href = `https://youtube.com/watch?v=${videoId}`;
 }
 
 updateCitiesList();

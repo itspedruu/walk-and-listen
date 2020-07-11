@@ -128,6 +128,7 @@ function changeLocation(locationId) {
 	state.currentLocation = location;
 
 	changeLocationText(location.name);
+	changeVideoSource(location.videoId);
 	changeRadio(location.radio);
 	toggleActiveClassOnLocation(location.id);
 	playVideo(location);
